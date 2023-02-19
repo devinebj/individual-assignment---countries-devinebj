@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.plantdiary.individualassignment304832.dto.Country
 import app.plantdiary.individualassignment304832.service.CountryService
+import app.plantdiary.individualassignment304832.service.ICountryService
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(var countryService : ICountryService = CountryService()) : ViewModel() {
     var countries : MutableLiveData<List<Country>> = MutableLiveData<List<Country>>()
-    var countryService : CountryService = CountryService();
 
     fun fetchCountries() {
         viewModelScope.launch {
